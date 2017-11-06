@@ -26,20 +26,15 @@ document.onkeyup = function() {
   var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
   console.log(userGuess); 
 
-  
-  if (userGuess.indexOf(bandString)) {
-    console.log("it's a letter!");
-  }
-  else {
-    console.log(blanks);
-  }
-  /*
-  while (bandString.indexOf(userGuess, startValue) !== 1) {
-    startValue = bandString.indexOf(userGuess, startValue) +1;
-    if (userGuess == bandString) {
-      cosole.log(blanks);
+  while (getBand.indexOf(userGuess, startValue) !== -1) {
+    startValue = getBand.indexOf(userGuess, startValue) + 1;
+    if (userGuess.indexOf(bandString)) {
+      console.log("it's a letter!");
     }
- */
+    else {
+      console.log("Not a letter");
+    }
+  }
   }
  
 
