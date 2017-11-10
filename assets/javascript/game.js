@@ -12,66 +12,48 @@ var bandArray = ["WEEN","BUDOS","PRINCE","DOORS"];
 var getBand = bandArray[Math.floor(Math.random() * bandArray.length)];
   console.log(getBand);
 
-// var game = {
-//   guessed: [],
-//   guessCount: 20,
+var bandString = getBand.split("");
+var blanks = bandString.map(a=>'_');
+var guessCount = 20;
+var guessed = [];
 
-// var game = {
-//   guessed: [],
-//   guessCount: 20,
-//   wins: 0,
-//   startValue: 0
+
+//
+// var index = 1;
+// var guess = "s"
+// var index = bandString.indexOf(gues);
+// if(index>-1){
+//   blanks[index] = guess;
 // }
+//
 
-//function(stringBand) {
-  var bandString = getBand.split("");
-  var blanks = bandString.map(a=>'_');
-  var blanksArray = [];
-  var guessCount = 20;
-  var guessed = [];
+document.onkeyup = function(event) {
+  var userGuess = event.key.toUpperCase();
+  console.log(userGuess); 
+  
+  document.querySelector('#blanks').innerHTML = blanks.join(" ");
+    
+  if (bandString.indexOf(userGuess) > -1) {
+    console.log("it's a letter!");
+    var index = bandString.indexOf(userGuess)
+    if(index>-1){
+      blanks[index]=userGuess;
+    }    
+  } 
 
-  var blanks_span = "<span>" + blanks + "<span>";
+  else {
+    console.log("Not a letter");
+  }
 
-  document.querySelector('#blanks').innerHTML = blanks_span;
-  //document.querySelector('#blanks').innerHTML = bandString.map(a=>'_');
-
-  document.onkeyup = function(event) {
-    var userGuess = event.key.toUpperCase(); //String.fromCharCode(event.keyCode).toLowerCase();
-    console.log(userGuess); 
-    var startValue = 0;
-
-    // // update letters and fill blanks
-    // while (getBand.indexOf(userGuess, startValue) !== -1) {
-    // //blanks[bandString.indexOf(userGuess, startValue)].push(guessed);
-    //   startValue = getBand.indexOf(userGuess, startValue) + 1;
-    // //   //document.querySelector('#letters').innerHTML = guessed.push(" " + userGuess);
-    // //   //document.querySelector('#used').innerHTML = guessed.push(String.fromCharCode(userGuess));
-    // guessCount -1;
-    // console.log(guessCount)
+  guessed.push(userGuess);
+  console.log(guessed);
+  document.querySelector('#used').innerHTML = guessed.join(String.fromCharCode(userGuess));
 
 
-    //replace dash with letter
-    // for (i=0; i<bandString.length; i++) {
-    //   console.log(guessCount);
-      
-
-      if (bandString.indexOf(userGuess) > -1) {
-        console.log("it's a letter!");
-        document.querySelector('#used').innerHTML = guessed.push(String.fromCharCode(userGuess));
-
-        //console.log(userGuess);
-      } 
-      else {
-        console.log("Not a letter");
-        guessed.push(userGuess);
-        //console.log(userGuess);
-      }
-    }
-
-
-
-
-
-
-
-
+  guessCount--;
+  document.querySelector("#guessCount").innerHTML = guessCount;
+  if (guessCount == 0) {
+    var loser = "you lost"
+    document.querySelector('body').innerHTML = loser;
+  }
+}
