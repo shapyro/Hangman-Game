@@ -18,32 +18,26 @@ var guessCount = 20;
 var guessed = [];
 
 
-//
-// var index = 1;
-// var guess = "s"
-// var index = bandString.indexOf(gues);
-// if(index>-1){
-//   blanks[index] = guess;
-// }
-//
-
 document.onkeyup = function(event) {
   var userGuess = event.key.toUpperCase();
+
   console.log(userGuess); 
   
-  document.querySelector('#blanks').innerHTML = blanks.join(" ");
-    
-  if (bandString.indexOf(userGuess) > -1) {
-    console.log("it's a letter!");
-    var index = bandString.indexOf(userGuess)
-    if(index>-1){
-      blanks[index]=userGuess;
-    }    
+  if(/^[a-zA-Z]+$/.test(userGuess)){
+  
+
+  var index = bandString.indexOf(userGuess) 
+  while (index >-1) {
+    console.log("it's a letter!");    
+      blanks[index]=userGuess; 
+      index = bandString.indexOf(userGuess, index+1); 
   } 
 
-  else {
-    console.log("Not a letter");
-  }
+  // else {
+  //   console.log("Not a letter");
+  // }
+
+  document.querySelector('#blanks').innerHTML = blanks.join(" ");
 
   guessed.push(userGuess);
   console.log(guessed);
@@ -56,4 +50,5 @@ document.onkeyup = function(event) {
     var loser = "you lost"
     document.querySelector('body').innerHTML = loser;
   }
+}
 }
