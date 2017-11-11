@@ -34,6 +34,15 @@ document.onkeyup = function(event){
       var loser = "you lost"
       document.querySelector('body').innerHTML = loser;
     } 
+
+    if(blanks.indexOf('_') === -1){
+      var winner = "YOU WIN!"
+      document.querySelector('#band').innerHTML = winner;
+    }
+    else {
+      return;
+    }
   }
 }
+
 
