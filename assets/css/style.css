@@ -12,3 +12,8 @@ header {
   font-size: 15px;
   /*animation-name: flash;*/
 }
+
+#blanks {
+  font-size: 50px;
+  margin: 20px;
+}
