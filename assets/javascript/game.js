@@ -12,15 +12,14 @@ var guessed = [];
 //player1, pick a letter
 //letter to upper case to match array
 //letter is indeed a letter because regex
-document.onkeyup = function(event) {
+document.onkeyup = function(event){
   var userGuess = event.key.toUpperCase();
   
   if(/^[a-zA-Z]+$/.test(userGuess)){
-    
-    //index used to update blanks with letters
+
     var index = bandString.indexOf(userGuess);
     
-    while (index >-1) {  
+    while (index >-1){  
       blanks[index]=userGuess; 
       index = bandString.indexOf(userGuess, index+1); 
       document.querySelector('#blanks').innerHTML = blanks.join(" ");

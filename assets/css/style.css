@@ -1,5 +1,6 @@
 * {
   text-align: center;
+  font-family: Poppins;
 }
 
 header {
@@ -10,10 +11,11 @@ header {
 
 #band {
   font-size: 15px;
-  /*animation-name: flash;*/
 }
 
 #blanks {
   font-size: 50px;
   margin: 20px;
+  font-family: Anton;
+  border-bottom: thick green;
 }
